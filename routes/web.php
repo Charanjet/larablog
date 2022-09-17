@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PostsController::class,'index']);
+Route::get('dashboard', [DashboardController::class,'index']);
+Route::post('create-post',[DashboardController::class,'createPost']);
+Route::get('post/{id}', [PostsController::class,'getPost']);
