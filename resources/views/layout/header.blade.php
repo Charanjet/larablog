@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ url('assets/bootstrap5/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ url('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ url('/assets/bootstrap5/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url('/assets/css/style.css')}}">
     <title>Blog</title>
 </head>
 <body>
@@ -32,11 +32,11 @@
                     </div>
                     <!-- Right navigation -->
                     <div class="navbar-nav ms-lg-4">
-                        <a class="nav-item nav-link" href="#">Sign in</a>
+                        <a class="nav-item nav-link" href="{{ route('login') }}">Sign in</a>
                     </div>
                     <!-- Action -->
                     <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
-                        <a href="#" class="btn btn-sm btn-primary w-full w-lg-auto">
+                        <a href="{{ route('register') }}" class="btn btn-sm btn-primary w-full w-lg-auto">
                             Register
                         </a>
                     </div>

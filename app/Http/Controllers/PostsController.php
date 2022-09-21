@@ -16,6 +16,7 @@ class PostsController extends Controller
 
     public function getPost($id)
     {
-        echo "id is ". $id;      
+        $post = Post::where('id','=',$id)->first();
+        return view('frontend.post-detail')->with('post',$post);
     }
 }
