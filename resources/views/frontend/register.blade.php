@@ -2,8 +2,9 @@
 @section('content')
     <div class="row m-5">
         <div class="col-6 offset-3">
-            <h2>Registration Form</h2>
-            <form action="bootstrapform.php" method="post">
+            <h2 class="text-center">Registration Form</h2>
+            <form action="{{ route('registerPost') }}" method="post">
+                @csrf
                 <div class="form-group mt-3">
                     <label for="firstname">First Name</label>
                     <input type="text" class="form-control" id="exampleInputfirstname" name="firstname">

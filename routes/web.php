@@ -17,7 +17,7 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', [PostsController::class,'index']);
-Route::get('dashboard', [DashboardController::class,'index']);
+Route::get('dashboard', [DashboardController::class,'index'])->middleware('auth')->name('dashboard');
 Route::post('create-post',[DashboardController::class,'createPost']);
 Route::get('post/{id}', [PostsController::class,'getPost']);
 Route::get('register',[LoginController::class,'registerView'])->name('register');
@@ -25,5 +25,6 @@ Route::post('register',[LoginController::class,'registerAction'])->name('registe
 
 Route::get('login',[LoginController::class,'loginView'])->name('login');
 Route::post('login',[LoginController::class,'loginAction'])->name('loginPost');
+Route::get('logout',[LoginController::class,'logoutAction'])->name('logout');
 
 

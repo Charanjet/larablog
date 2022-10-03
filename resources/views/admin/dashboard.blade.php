@@ -1,14 +1,5 @@
 @include('layout.header')
-@if (Session::get('error-msg'))
-    <div class="error-msg btn-danger alert m-5">
-        {{Session::get('error-msg')}}
-    </div>
-@endif
-@if (Session::get('msg'))
-    <div class="success-msg btn-success alert m-5">
-        {{Session::get('msg')}}
-    </div>
-@endif
+
 <h2 class="m-5">Manage Posts</h2>
 <div class="container create-post-wrapper">
     <form action="create-post" method="post">

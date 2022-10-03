@@ -32,7 +32,15 @@
                     </div>
                     <!-- Right navigation -->
                     <div class="navbar-nav ms-lg-4">
-                        <a class="nav-item nav-link" href="{{ route('login') }}">Sign in</a>
+                            @if(Auth::check())
+                                <a class="nav-item nav-link" href="{{ route('logout') }}">
+                                    Log Out
+                                </a>
+                            @else
+                                <a class="nav-item nav-link" href="{{ route('login') }}">
+                                    Sign in
+                                </a>
+                        @endif
                     </div>
                     <!-- Action -->
                     <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
@@ -44,4 +52,13 @@
             </div>
         </nav>
         <!--header nav end-->
-    
+        @if (Session::get('error-msg'))
+            <div class="error-msg btn-danger alert m-5">
+                {{Session::get('error-msg')}}
+            </div>
+        @endif
+        @if (Session::get('msg'))
+            <div class="success-msg btn-success alert m-5">
+                {{Session::get('msg')}}
+            </div>
+        @endif
