@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-md-7">
                         <div class="post-title h2"> {{ $post->title }}</div>
-                        <div class="post-author h5">By: {{ $post->author }}</div>
+                        <div class="post-author h5">By: {{ $post->user->name }}</div>
                         <div class="post-date h6">On: {{ $post->created_at }}</div>
 
                         <div class="post-excerpt">{{ $post->excerpt }}</div>

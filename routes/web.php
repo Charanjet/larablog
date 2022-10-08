@@ -17,14 +17,21 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', [PostsController::class,'index']);
-Route::get('dashboard', [DashboardController::class,'index'])->middleware('auth')->name('dashboard');
-Route::post('create-post',[DashboardController::class,'createPost']);
-Route::get('post/{id}', [PostsController::class,'getPost']);
+//Admin Routes
+
+Route::middleware('auth')->group(function (){
+    Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
+    Route::post('create-post',[PostsController::class,'create']);
+    Route::get('posts/view/{uid}',[PostsController::class,'getPostsByUserId']);
+});
+
+
+//Front routes
 Route::get('register',[LoginController::class,'registerView'])->name('register');
 Route::post('register',[LoginController::class,'registerAction'])->name('registerPost');
-
 Route::get('login',[LoginController::class,'loginView'])->name('login');
 Route::post('login',[LoginController::class,'loginAction'])->name('loginPost');
 Route::get('logout',[LoginController::class,'logoutAction'])->name('logout');
+Route::get('post/{id}', [PostsController::class,'getPost']);
 
 

@@ -8,7 +8,7 @@ use App\Models\Dashboard;
 use App\Models\Post;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -17,33 +17,13 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(PostsController $postsController)
     {
         //
-        return view('admin.dashboard');
+        $posts = $postsController->getPostsByUserId(Auth::user()->id);
+        return view('admin.dashboard')->with(['posts'=>$posts,'user'=>Auth::user()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createPost(Request $request)
-    {
-        $post = new Post;
-        $post->title = $request->post('title');
-        $post->slug = $request->post('slug');
-        $post->excerpt = $request->post('excerpt');
-        $post->description = $request->post('desription');
-        $post->status = $request->post('post-status');
-        $post->author = $request->post('author');
-        if($post->save()){
-            return redirect('dashboard')->with('msg','Post saved successfully');
-        }else{
-            return redirect('dashboard')->with('error-msg','Post save unsuccessfull');
-        }
-
-    }
 
     /**
      * Store a newly created resource in storage.
