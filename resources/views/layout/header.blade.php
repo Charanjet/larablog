@@ -15,7 +15,7 @@
             <div class="container-xl">
                 <!-- Logo -->
                 <a class="navbar-brand" href="/">
-                    <img src="./assets/images/logo.png" class="h-2" alt="...">
+                    <img src="{{ url('/assets/images/logo.png') }}" class="h-2" alt="...">
                 </a>
                 <!-- Navbar toggle -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

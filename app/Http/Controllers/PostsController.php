@@ -54,11 +54,40 @@ class PostsController extends Controller{
     }
 
     public function getPostsByUserId($user_id){
-        $posts = Post::find(['user_id'=>$user_id]);
+
+        $posts = Post::where('user_id',$user_id)->get();
         if ($this->request->is('posts/view/*')){
             return view('admin.posts')->with(['posts'=>$posts,'user'=>Auth::user()]);
         }
         return $posts;
+    }
+
+    public function edit($id){
+        $post = Post::find($id);
+        return view('admin.edit')->with('post',$post);
+    }
+
+    public function update($id){
+        $post = Post::where('id',$id)->first();
+        $post->title = $this->request->post('title');
+        $post->slug = $this->request->post('slug');
+        $post->excerpt = $this->request->post('excerpt');
+        $post->description = $this->request->post('description');
+        $post->status = $this->request->post('status');
+        if ($post->save()){
+            return redirect(route('dashboard'))->with('msg','Post Successfully Updated');
+        }else{
+            return redirect('dashboard')->with('error-msg','Something Went Wrong');
+
+        }
+    }
+
+    public function delete($id){
+        if (Post::destroy($id)){
+            return redirect(route('dashboard'))->with('msg','Post Deleted');
+        }else{
+            return redirect('dashboard')->with('error-msg','Something Went Wrong');
+        }
     }
 
 }

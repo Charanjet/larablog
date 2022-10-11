@@ -23,6 +23,9 @@ Route::middleware('auth')->group(function (){
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
     Route::post('create-post',[PostsController::class,'create']);
     Route::get('posts/view/{uid}',[PostsController::class,'getPostsByUserId']);
+    Route::get('post/edit/{id}',[PostsController::class,'edit']);
+    Route::post('post/update/{id}',[PostsController::class,'update']);
+    Route::post('post/delete/{id}',[PostsController::class,'delete']);
 });
 
 

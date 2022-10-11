@@ -3,7 +3,6 @@
     <div class="col-2 "> @include('admin.sidebar',['user'=>$user]) </div>
     <div class="col-8 offset-1 mb-5 mt-5">
         <h2>Posts</h2>
-    @foreach($posts as $post)
         <table class="table">
             <thead>
             <tr>
@@ -15,15 +14,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">{{ $post->id }}</th>
-                <td>{{ $post->title }}</td>
-                <td>{{ $post->description }}</td>
-                <td>{{ $post->status==1?'Active':'Disabled' }}</td>
-                <td>Edit/Delete</td>
-            </tr>
+
+            @foreach($posts as $post)
+                <tr>
+                    <th scope="row">{{ $post->id }}</th>
+                    <td><a href="/post/{{ $post->id }}">{{ $post->title }}</a></td>
+                    <td>{{ $post->description }}</td>
+                    <td>{{ $post->status==1?'Active':'Disabled' }}</td>
+                    <td><a href="/post/edit/{{$post->id}}">Edit/Delete</a></td>
+                </tr>
+
+        @endforeach
             </tbody>
         </table>
-    @endforeach
     </div>
 @endsection

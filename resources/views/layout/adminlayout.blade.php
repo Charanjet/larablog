@@ -3,3 +3,4 @@
     @yield('content')
 </div>
 @include('layout.footer')
+@include('admin.scripts')
