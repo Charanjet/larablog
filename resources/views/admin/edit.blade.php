@@ -1,5 +1,6 @@
 @extends('layout.adminlayout')
 @section('content')
+<div class="m-5">
     <form action="/post/update/{{ $post->id }}" method="post">
         @csrf
         <div class="row">
@@ -45,8 +46,10 @@
 
         <button type="submit" class="btn btn-primary">Update Post</button>
     </form>
-    <form action="/post/delete/{{ $post->id }}" method="post">
+
+    <form action="/post/delete/{{ $post->id }}" method="post" class="mt-3">
         @csrf
         <button type="submit" class="btn btn-primary">Delete</button>
     </form>
+</div>
 @endsection
